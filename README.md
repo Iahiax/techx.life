@@ -87,4 +87,81 @@ npm install && npm run build
 # إنشاء ملف مضغوط للمشروع
 zip -r techx.zip . -x "node_modules/*" ".git/*" ".env"
 
+
+
+إنشاء مفتاح التطبيق
+في cPanel، افتح Terminal (إذا كان متاحاً) أو استخدم SSH. اكتب:
+cd public_html
+php artisan key:generate
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
+
+
+إذا لم يتوفر Terminal، يمكنك إضافة المفتاح يدوياً في ملف .env عن طريق توليد مفتاح محلياً ثم نسخه:
+# على جهازك المحلي
+php artisan key:generate --show
+# انسخ المفتاح وأضفه إلى ملف .env على السيرفر: APP_KEY=base64:...
+
+
+
+
+ترحيل قاعدة البيانات:
+php artisan migrate --force
+
+
+
+
+الضبط الصلاحيات (Permissions)
+الصلاحيات الصحيحة مهمة جداً لتجنب أخطاء 403 و 500 :
+# مجلدات التخزين تحتاج صلاحية كتابة
+chmod -R 775 storage bootstrap/cache
+chmod -R 775 public/build
+
+# الملفات العادية تكون 644
+find . -type f -exec chmod 644 {} \;
+
+# المجلدات تكون 755
+find . -type d -exec chmod 755 {} \;
+
+
+
+
+
+
+
+
+إعداد جذر المستند (Document Root)
+لجعل Laravel يعمل بشكل صحيح، يجب أن يشير جذر المستند إلى مجلد public . هناك طريقتان:
+
+الطريقة A: عبر cPanel Domains
+
+اذهب إلى Domains في cPanel
+
+اختر موقعك، ثم اضبط Document Root ليكون public_html/public
+
+الطريقة B: عبر ملف .htaccess
+أنشئ ملف .htaccess في public_html (جذر المجلد الرئيسي) بالمحتوى التالي :
+
+apache
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ /public/$1 [L]
+</IfModule>
+
+
+
+
+
+
+الخطوة 1: تفعيل SSH في cPanel
+في cPanel، ابحث عن SSH Access وفعّله 
+
+أنشئ مفتاح SSH جديد أو ارفع المفتاح العام الخاص بك 
+
+الخطوة 2: الاتصال بالسيرفر عبر SSH
+ssh username@server_name -p21098
+
 جميع الدوال تستقبل معاملات فلترة من الـ request لتحديد نطاق التقرير.
