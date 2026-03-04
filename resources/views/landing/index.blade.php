@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تكـ — منصة الاستقطاع المالي الذكية</title>
+    <title>techx.life – منصة الاستقطاع المالي الذكية</title>
     <!-- Bootstrap 5 RTL -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.rtl.min.css">
     <!-- Font Awesome -->
@@ -199,7 +199,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <img src="https://via.placeholder.com/150x50/1e3c72/ffffff?text=Techxx" alt="Techxx">
+                <img src="https://via.placeholder.com/150x50/1e3c72/ffffff?text=techx.life" alt="techx.life">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -212,8 +212,8 @@
                     <li class="nav-item"><a class="nav-link" href="#contact">اتصل بنا</a></li>
                 </ul>
                 <div class="login-buttons">
-                    <a href="{{ route('nafath.redirect') }}" class="btn btn-outline-custom"><i class="fas fa-fingerprint ms-2"></i>دخول الأفراد (نفاذ)</a>
-                    <a href="{{ route('tawtheeq.redirect') }}" class="btn btn-primary-custom"><i class="fas fa-building ms-2"></i>دخول المنشآت (توثيق)</a>
+                    <a href="{{ route('auth.nafath.redirect') }}" class="btn btn-outline-custom"><i class="fas fa-fingerprint ms-2"></i>دخول الأفراد (نفاذ)</a>
+                    <a href="{{ route('auth.tawtheeq.redirect') }}" class="btn btn-primary-custom"><i class="fas fa-building ms-2"></i>دخول المنشآت (توثيق)</a>
                 </div>
             </div>
         </div>
@@ -234,7 +234,7 @@
     {{-- قسم المميزات --}}
     <section id="features" class="py-5">
         <div class="container">
-            <h2 class="section-title text-center">لماذا تختار تكـ؟</h2>
+            <h2 class="section-title text-center">لماذا تختار techx.life؟</h2>
             <div class="row g-4 mt-4">
                 <div class="col-md-4">
                     <div class="feature-card">
@@ -389,15 +389,19 @@
             <div class="phone-number">
                 <i class="fas fa-phone-alt ms-3"></i> 0530098089
             </div>
-            <p class="mt-4">أو راسلنا على البريد الإلكتروني: <a href="mailto:info@techxx.sa" style="color:white; text-decoration:underline;">info@techxx.sa</a></p>
+            <p class="mt-4">أو راسلنا على البريد الإلكتروني: <a href="i_x@outlook.sa" style="color:white; text-decoration:underline;">info@techx.life</a></p>
         </div>
     </section>
 
-    {{-- تذييل الصفحة --}}
+    {{-- تذييل الصفحة مع رابط المستودع --}}
     <footer>
         <div class="container">
-            <p>جميع الحقوق محفوظة &copy; 2025 تكـ (Techxx) | منصة الاستقطاع المالي الذكية</p>
+            <p>جميع الحقوق محفوظة &copy; 2025 techx.life | منصة الاستقطاع المالي الذكية</p>
             <p>
+                <a href="https://github.com/Iahiax/techx.life.git" target="_blank" class="mx-2">
+                    <i class="fab fa-github ms-1"></i> مستودع GitHub
+                </a>
+                |
                 <a href="#" class="mx-2">الشروط والأحكام</a> |
                 <a href="#" class="mx-2">سياسة الخصوصية</a>
             </p>
@@ -407,8 +411,7 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // يمكن إضافة أي كود JavaScript هنا لتحسين التفاعل
-        // على سبيل المثال، تمرير سلس عند النقر على الروابط
+        // تمرير سلس عند النقر على الروابط
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
