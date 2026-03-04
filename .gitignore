@@ -1,30 +1,224 @@
+# Laravel framework
 /vendor/
-node_modules/
+/node_modules/
+/public/hot
+/public/storage
+/storage/*.key
+/storage/**/*.key
+/storage/framework/cache/
+/storage/framework/sessions/
+/storage/framework/testing/
+/storage/framework/views/
+/storage/logs/
+/.env
+/.env.backup
+/.env.production
+/.env.local
+/.env.*.local
+/.phpunit.result.cache
+Homestead.json
+Homestead.yaml
 npm-debug.log
 yarn-error.log
+/.idea
+/.vscode
+/.vagrant
+/.php_cs
+.php_cs.cache
+.php-cs-fixer.cache
+/.php-cs-fixer.php
+.php-cs-fixer.cache
+/coverage
+/.phpunit.cache
+.phpunit.result.cache
+.phpunit-watcher.yml
+.phpstorm.meta.php
+_ide_helper.php
+_ide_helper_models.php
+.php_cs.cache
+.php_cs.dist
+.phpunit.result.cache
+/package-lock.json
+/yarn.lock
+/composer.lock
 
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
+# IDE
+/.idea
+/.vscode
+*.sublime-*
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
 
-# Laravel 5 & Lumen specific
-public/storage
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+docker-compose.yml
+/docker/data/
+
+# Testing
+/phpunit.xml
+/phpunit.xml.dist
+/phpunit.xml.bak
+/phpunit.xml.old
+
+# Logs
+*.log
+storage/logs/*.log
+!storage/logs/.gitignore
+
+# Uploads
+storage/app/public/uploads/
+storage/app/public/temp/
+public/uploads/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Cache
+/bootstrap/cache/*
+!/bootstrap/cache/.gitignore
+
+# Session
+storage/framework/sessions/*
+!storage/framework/sessions/.gitignore
+
+# Views
+storage/framework/views/*.php
+!storage/framework/views/.gitignore
+
+# Compiled files
+/public/css
+/public/js
+/public/mix-manifest.json
+public/mix-manifest.json
+public/js/app.js
+public/css/app.css
 public/hot
 
-# Laravel 5 & Lumen specific with changed public path
-public_html/storage
-public_html/hot
+# npm
+node_modules/
+npm-debug.log
+npm-error.log
+package-lock.json
+yarn.lock
+yarn-error.log
 
-storage/*.key
-.env
-Homestead.yaml
-Homestead.json
-/.vagrant
+# Composer
+composer.phar
+vendor/
+composer.lock
+
+# PHPUnit
 .phpunit.result.cache
+.phpunit.cache
 
-/public/build
-/storage/pail
-.env.backup
-.env.production
-.phpactor.json
-auth.json
+# PHP CS Fixer
+.php-cs-fixer.cache
+.php-cs-fixer.php
+.php_cs.cache
+
+# PHPStan
+.phpstan.neon
+.phpstan.result
+
+# Laravel Octane
+storage/logs/octane.log
+
+# Laravel Telescope
+storage/telescope/
+
+# Laravel Horizon
+storage/horizon/
+
+# Laravel Nova
+nova/
+
+# Laravel Spark
+spark/
+
+# Laravel Dusk
+tests/Browser/console
+tests/Browser/screenshots
+
+# Code Coverage
+coverage/
+.clover
+.crc
+.phpunit.result.cache
+.phpunit.cache
+clover.xml
+phpunit.xml
+
+# Backup files
+*.bak
+*.old
+*.orig
+
+# MacOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+.directory
+
+# IDE - PHPStorm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Eclipse
+.project
+.classpath
+.settings/
+.buildpath
+
+# Archives
+*.tar
+*.gz
+*.zip
+*.7z
+*.rar
+
+# Database dumps
+*.sql
+*.sql.gz
+*.sql.zip
