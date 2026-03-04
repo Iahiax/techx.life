@@ -1,3 +1,42 @@
+# Techx.life - منصة الاستقطاع المالي الذكية
+
+هذا المشروع هو نظام متكامل لإدارة الاستقطاعات المالية من الرواتب والحسابات البنكية، يربط الأفراد (عبر النفاذ الوطني) والمنشآت (عبر توثيق) مع الجهات المستفيدة.
+
+## المميزات
+- تسجيل دخول آمن عبر النفاذ الوطني وتوثيق
+- ربط حسابات بنكية عبر Open Banking (Lean)
+- إنشاء عقود واستقطاعات شهرية
+- لوحات تحكم متعددة (عميل، منشأة، مشرف)
+- تقارير PDF شاملة
+- واجهة API للتكامل الخارجي
+
+## التقنيات المستخدمة
+- Laravel 11
+- MySQL
+- Bootstrap 5
+- Dompdf
+- Lean Open Banking API
+
+## متطلبات التشغيل
+- PHP 8.2+
+- Composer
+- MySQL
+- مفاتيح API من: نفاذ، توثيق، Lean
+
+## التثبيت
+```bash
+git clone https://github.com/Iahiax/techxx.git
+cd techxx
+composer install
+cp .env.example .env
+# قم بتعديل ملف .env
+php artisan key:generate
+php artisan migrate
+php artisan serve
+
+
+
+
 # techx.life
 composer create-project laravel/laravel techx.life
 cd techx.life
