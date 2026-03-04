@@ -4,25 +4,24 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Name
+    | اسم التطبيق
     |--------------------------------------------------------------------------
     |
-    | This value is the name of your application. This value is used when the
-    | framework needs to place the application's name in a notification or
-    | any other location as required by the application or its packages.
+    | هذا القيمة هي اسم تطبيقك. تُستخدم عندما يحتاج الإطار إلى وضع اسم التطبيق
+    | في إشعار أو أي موقع آخر يتطلبه التطبيق أو حزمه.
     |
     */
 
-    'name' => env('APP_NAME', 'Techx.life'),
+    'name' => env('APP_NAME', 'techx.life'),
 
     /*
     |--------------------------------------------------------------------------
-    | Application Environment
+    | بيئة التطبيق
     |--------------------------------------------------------------------------
     |
-    | This value determines the "environment" your application is currently
-    | running in. This may determine how you prefer to configure various
-    | services the application utilizes. Set this in your ".env" file.
+    | هذه القيمة تحدد "البيئة" التي يعمل فيها تطبيقك حاليًا.
+    | قد تحدد كيفية تفضيل تكوين الخدمات المختلفة التي يستخدمها التطبيق.
+    | قم بتعيين هذا في ملف ".env" الخاص بك.
     |
     */
 
@@ -30,12 +29,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Debug Mode
+    | وضع تصحيح الأخطاء
     |--------------------------------------------------------------------------
     |
-    | When your application is in debug mode, detailed error messages with
-    | stack traces will be shown on every error that occurs within your
-    | application. If disabled, a simple generic error page is shown.
+    | عندما يكون تطبيقك في وضع التصحيح، سيتم عرض رسائل خطأ مفصلة مع
+    | تتبع الأخطاء على كل خطأ يحدث داخل تطبيقك. إذا تم تعطيله،
+    | سيتم عرض صفحة خطأ عامة بسيطة.
     |
     */
 
@@ -43,12 +42,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application URL
+    | رابط التطبيق
     |--------------------------------------------------------------------------
     |
-    | This URL is used by the console to properly generate URLs when using
-    | the Artisan command line tool. You should set this to the root of
-    | your application so that it is used when running Artisan tasks.
+    | يستخدم هذا الرابط بواسطة وحدة التحكم لتوليد روابط بشكل صحيح عند استخدام
+    | أداة سطر الأوامر Artisan. يجب عليك تعيين هذا إلى الجذر
+    | لتطبيقك بحيث يتم استخدامه عند تشغيل مهام Artisan.
     |
     */
 
@@ -58,12 +57,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Timezone
+    | المنطقة الزمنية للتطبيق
     |--------------------------------------------------------------------------
     |
-    | Here you may specify the default timezone for your application, which
-    | will be used by the PHP date and date-time functions. We have gone
-    | ahead and set this to a sensible default for you out of the box.
+    | هنا يمكنك تحديد المنطقة الزمنية الافتراضية لتطبيقك، والتي ستستخدمها
+    | دوال PHP للتاريخ والوقت. قمنا بتعيين قيمة معقولة افتراضية لك.
     |
     */
 
@@ -71,12 +69,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Locale Configuration
+    | إعدادات اللغة المحلية للتطبيق
     |--------------------------------------------------------------------------
     |
-    | The application locale determines the default locale that will be used
-    | by the translation service provider. You are free to set this value
-    | to any of the locales which will be supported by the application.
+    | تحدد اللغة المحلية للتطبيق اللغة الافتراضية التي ستستخدمها
+    | مزود خدمة الترجمة. أنت حر في تعيين هذه القيمة
+    | إلى أي من اللغات المدعومة من التطبيق.
     |
     */
 
@@ -84,12 +82,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Fallback Locale
+    | اللغة المحلية البديلة للتطبيق
     |--------------------------------------------------------------------------
     |
-    | The fallback locale determines the locale to use when the current one
-    | is not available. You may change the value to correspond to any of
-    | the language folders that are provided through your application.
+    | اللغة البديلة تحدد اللغة التي سيتم استخدامها عندما تكون اللغة الحالية
+    | غير متوفرة. يمكنك تغيير القيمة لتتوافق مع أي من مجلدات اللغة
+    | المتوفرة من خلال تطبيقك.
     |
     */
 
@@ -97,12 +95,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Faker Locale
+    | لغة Faker
     |--------------------------------------------------------------------------
     |
-    | This locale will be used by the Faker PHP library when generating fake
-    | data for your database seeds. For example, this will be used to get
-    | localized telephone numbers, street address information and more.
+    | سيتم استخدام هذه اللغة بواسطة مكتبة Faker PHP عند توليد بيانات
+    | وهمية لقاعدة البيانات. على سبيل المثال، سيتم استخدام هذا للحصول على
+    | أرقام هواتف محلية، معلومات عناوين الشوارع والمزيد.
     |
     */
 
@@ -110,12 +108,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Encryption Key
+    | مفتاح التشفير
     |--------------------------------------------------------------------------
     |
-    | This key is utilized by Laravel's encryption services and should be set
-    | to a random, 32 character string to ensure that all encrypted values
-    | are secure. You should do this prior to deploying the application.
+    | يستخدم هذا المفتاح بواسطة خدمات التشفير في Laravel ويجب تعيينه
+    | إلى سلسلة عشوائية طويلة من 32 حرفًا لضمان أن جميع القيم المشفرة
+    | آمنة. يجب عليك فعل ذلك قبل نشر التطبيق.
     |
     */
 
@@ -131,14 +129,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Maintenance Mode Driver
+    | وضع الصيانة
     |--------------------------------------------------------------------------
     |
-    | These configuration options determine the driver used to determine and
-    | manage Laravel's "maintenance mode" status. The "cache" driver will
-    | allow maintenance mode to be controlled across multiple machines.
+    | تحدد خيارات التكوين هذه السائق المستخدم لتحديد وإدارة
+    | حالة "وضع الصيانة" في Laravel. سائق "cache" سيسمح
+    | بالتحكم في وضع الصيانة عبر عدة عمليات.
     |
-    | Supported drivers: "file", "cache"
+    | السائقون المدعومون: "file", "cache"
     |
     */
 
@@ -149,18 +147,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Autoloaded Service Providers
+    | مزودي الخدمة المحملة تلقائياً
     |--------------------------------------------------------------------------
     |
-    | The service providers listed here will be automatically loaded on the
-    | request to your application. Feel free to add your own services to
-    | this array to grant expanded functionality to your applications.
+    | مزودو الخدمة المدرجون هنا سيتم تحميلهم تلقائياً عند
+    | طلب تطبيقك. لا تتردد في إضافة خدماتك الخاصة
+    | إلى هذه المصفوفة لتوسيع الوظائف.
     |
     */
 
     'providers' => [
         /*
-         * Laravel Framework Service Providers...
+         * مزودو خدمات إطار Laravel...
          */
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -186,28 +184,27 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
+         * مزودو خدمات الحزم...
          */
         Barryvdh\Dompdf\ServiceProvider::class,
 
         /*
-         * Application Service Providers...
+         * مزودو خدمات التطبيق...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Class Aliases
+    | أسماء مستعارة للكلاسات
     |--------------------------------------------------------------------------
     |
-    | This array of class aliases will be registered when this application
-    | is started. However, feel free to register as many as you wish as
-    | the aliases are "lazy" loaded so they don't hinder performance.
+    | مصفوفة الأسماء المستعارة للكلاسات هذه ستُسجل عند بدء التطبيق.
+    | ومع ذلك، لا تتردد في تسجيل أي عدد تريده من الأسماء المستعارة لأن
+    | الأسماء المستعارة يتم تحميلها "كسولة" لذا لا تضر بالأداء.
     |
     */
 
@@ -252,7 +249,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        // Package Aliases
+        // الأسماء المستعارة للحزم
         'PDF' => Barryvdh\Dompdf\Facade\Pdf::class,
     ],
 
