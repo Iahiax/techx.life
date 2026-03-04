@@ -1,0 +1,27 @@
+
+---
+
+### 5. التأكد من ملف `.gitignore`
+تأكد من أن ملف `.gitignore` يستثني الملفات الحساسة مثل `.env` و `vendor/` و `node_modules/`. الملف الذي أعطيناه سابقاً كافٍ.
+
+---
+
+### 6. تحديث ملف `composer.json` مع إضافة معلومات المشروع
+أضف في `composer.json`:
+
+```json
+{
+    "name": "techx/techx",
+    "type": "project",
+    "description": "منصة الاستقطاع المالي الذكية - techx.life",
+    "keywords": ["laravel", "fintech", "deduction", "open banking"],
+    "homepage": "https://techx.life",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your-email@example.com"
+        }
+    ],
+    ...
+}
