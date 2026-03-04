@@ -68,4 +68,23 @@ financial_statement.blade.php
 
 يتم استخدام مكتبة barryvdh/laravel-dompdf لتحميل PDF. تأكد من تثبيتها عبر composer.
 
+
+
+
+# انتقل إلى مجلد المشروع
+cd /path/to/techx.life
+
+# احذف مجلد vendor وأعد تثبيت الحزم للإنتاج (بدون dev dependencies)
+rm -rf vendor
+composer install --optimize-autoloader --no-dev
+
+# حذف node_modules (اختياري - إذا كنت لا تستخدم assets محلية)
+rm -rf node_modules
+
+# بناء الأصول (assets) - إذا كنت تستخدم Vite أو Mix
+npm install && npm run build
+
+# إنشاء ملف مضغوط للمشروع
+zip -r techx.zip . -x "node_modules/*" ".git/*" ".env"
+
 جميع الدوال تستقبل معاملات فلترة من الـ request لتحديد نطاق التقرير.
