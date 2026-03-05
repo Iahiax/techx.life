@@ -7,12 +7,11 @@ define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
-| Check If The Application Is Under Maintenance
+| التحقق من وضع الصيانة
 |--------------------------------------------------------------------------
 |
-| If the application is in maintenance / demo mode via the "down" command
-| we will load this file so that any pre-rendered content can be shown
-| instead of starting the framework, which could cause an exception.
+| إذا كان التطبيق في وضع الصيانة (أمر down)، نقوم بتحميل ملف الصيانة
+| لعرض محتوى مُعد مسبقاً بدلاً من بدء تشغيل الإطار الذي قد يسبب استثناء.
 |
 */
 
@@ -22,12 +21,28 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
 
 /*
 |--------------------------------------------------------------------------
-| Register The Auto Loader
+| إخفاء الأخطاء والتحذيرات في بيئة الإنتاج
 |--------------------------------------------------------------------------
 |
-| Composer provides a convenient, automatically generated class loader for
-| this application. We just need to utilize it! We'll simply require it
-| into the script here so we don't need to manually load our classes.
+| نتحقق من بيئة التطبيق عبر متغير البيئة أو القيمة الافتراضية.
+| في بيئة الإنتاج نقوم بإخفاء عرض الأخطاء لحماية المعلومات الحساسة.
+|
+*/
+
+$env = $_SERVER['APP_ENV'] ?? $_ENV['APP_ENV'] ?? env('APP_ENV', 'production');
+if ($env === 'production') {
+    error_reporting(0);
+    ini_set('display_errors', '0');
+    ini_set('display_startup_errors', '0');
+}
+
+/*
+|--------------------------------------------------------------------------
+| تسجيل المحمل التلقائي
+|--------------------------------------------------------------------------
+|
+| يوفر Composer محملاً تلقائياً للكلاسات. نقوم بتضمينه هنا
+| حتى لا نضطر لتحميل الكلاسات يدوياً.
 |
 */
 
@@ -35,12 +50,11 @@ require __DIR__.'/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
-| Run The Application
+| تشغيل التطبيق
 |--------------------------------------------------------------------------
 |
-| Once we have the application, we can handle the incoming request using
-| the application's HTTP kernel. Then, we will send the response back
-| to this client's browser, allowing them to enjoy our application.
+| بعد الحصول على التطبيق، نتعامل مع الطلب الوارد باستخدام Kernel HTTP
+| الخاص بالتطبيق. ثم نرسل الرد إلى متصفح العميل.
 |
 */
 
