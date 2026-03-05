@@ -9,29 +9,30 @@ use Illuminate\Support\Facades\URL;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * تسجيل أي خدمات تطبيق.
+     * Register any application services.
      */
     public function register(): void
     {
-        // يمكنك ربط الواجهات بالخدمات هنا
-        // $this->app->bind(SomeInterface::class, SomeImplementation::class);
+        // يمكنك ربط الواجهات بالخدمات هنا إذا لزم الأمر
     }
 
     /**
-     * تشغيل أي خدمات بعد تسجيل جميع مقدمي الخدمات.
+     * Bootstrap any application services.
      */
     public function boot(): void
     {
         // تعيين طول افتراضي للـ string في MySQL لتجنب أخطاء المفاتيح
         Schema::defaultStringLength(191);
 
-        // إذا كان التطبيق في بيئة الإنتاج، فرض استخدام HTTPS في الروابط
+        // إذا كان التطبيق في بيئة الإنتاج، نقوم بما يلي:
         if ($this->app->environment('production')) {
+            // فرض استخدام HTTPS في جميع الروابط المولدة
             URL::forceScheme('https');
-        }
 
-        // (اختياري) تعيين اللغة الافتراضية للتطبيق إلى العربية
-        // config(['app.locale' => 'ar']);
-        // config(['app.fallback_locale' => 'en']);
+            // إخفاء عرض الأخطاء والتحذيرات (تظهر فقط في السجلات)
+            error_reporting(0);
+            ini_set('display_errors', '0');
+            ini_set('display_startup_errors', '0');
+        }
     }
 }
