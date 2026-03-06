@@ -1,32 +1,32 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Auth\NafathController;
 use App\Http\Controllers\Auth\TawtheeqController;
 use App\Http\Controllers\Customer\DashboardController as CustomerDashboardController;
 use App\Http\Controllers\Customer\ContractController as CustomerContractController;
 use App\Http\Controllers\Customer\AccountController as CustomerAccountController;
+use App\Http\Controllers\Customer\DeductionController as CustomerDeductionController;
+use App\Http\Controllers\Customer\NotificationController as CustomerNotificationController;
 use App\Http\Controllers\Customer\ReportController as CustomerReportController;
 use App\Http\Controllers\Organization\DashboardController as OrganizationDashboardController;
 use App\Http\Controllers\Organization\ContractController as OrganizationContractController;
 use App\Http\Controllers\Organization\DeductionController as OrganizationDeductionController;
+use App\Http\Controllers\Organization\NotificationController as OrganizationNotificationController;
 use App\Http\Controllers\Organization\ReportController as OrganizationReportController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\OrganizationController as AdminOrganizationController;
 use App\Http\Controllers\Admin\ContractController as AdminContractController;
 use App\Http\Controllers\Admin\DeductionController as AdminDeductionController;
+use App\Http\Controllers\Admin\NotificationController as AdminNotificationController;
 use App\Http\Controllers\Admin\ReportController as AdminReportController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
 // ========== الصفحات العامة ==========
@@ -37,6 +37,23 @@ Route::get('/', function () {
 // صفحات ثابتة (اختياري)
 Route::view('/about', 'landing.about')->name('about');
 Route::view('/contact', 'landing.contact')->name('contact');
+
+// ========== مسارات خاصة بالجدولة والصفوف (آمنة بمفتاح سري) ==========
+Route::get('/schedule-run', function () {
+    if (request('key') !== env('CRON_SECRET')) {
+        abort(403);
+    }
+    Artisan::call('schedule:run');
+    return 'تم تنفيذ الجدولة.';
+})->name('schedule.run');
+
+Route::get('/queue-run', function () {
+    if (request('key') !== env('CRON_SECRET')) {
+        abort(403);
+    }
+    Artisan::call('queue:work --stop-when-empty');
+    return 'تم تنفيذ الصفوف.';
+})->name('queue.run');
 
 // ========== مسارات المصادقة عبر نفاذ وتوثيق ==========
 Route::prefix('auth')->name('auth.')->group(function () {
@@ -82,6 +99,20 @@ Route::middleware(['auth', 'customer'])->prefix('customer')->name('customer.')->
         Route::get('/{contract}/deductions', [CustomerContractController::class, 'deductions'])->name('deductions');
     });
 
+    // الاستقطاعات
+    Route::prefix('deductions')->name('deductions.')->group(function () {
+        Route::get('/', [CustomerDeductionController::class, 'index'])->name('index');
+        Route::get('/{deduction}', [CustomerDeductionController::class, 'show'])->name('show');
+    });
+
+    // الإشعارات
+    Route::prefix('notifications')->name('notifications.')->group(function () {
+        Route::get('/', [CustomerNotificationController::class, 'index'])->name('index');
+        Route::get('/{notification}', [CustomerNotificationController::class, 'show'])->name('show');
+        Route::post('/mark-all-read', [CustomerNotificationController::class, 'markAllAsRead'])->name('mark-all-read');
+        Route::delete('/{notification}', [CustomerNotificationController::class, 'destroy'])->name('destroy');
+    });
+
     // التقارير
     Route::prefix('reports')->name('reports.')->group(function () {
         Route::get('/', [CustomerReportController::class, 'index'])->name('index');
@@ -114,6 +145,14 @@ Route::middleware(['auth', 'org-user'])->prefix('organization')->name('organizat
     Route::prefix('deductions')->name('deductions.')->group(function () {
         Route::get('/', [OrganizationDeductionController::class, 'index'])->name('index');
         Route::get('/{deduction}', [OrganizationDeductionController::class, 'show'])->name('show');
+    });
+
+    // الإشعارات
+    Route::prefix('notifications')->name('notifications.')->group(function () {
+        Route::get('/', [OrganizationNotificationController::class, 'index'])->name('index');
+        Route::get('/{notification}', [OrganizationNotificationController::class, 'show'])->name('show');
+        Route::post('/mark-all-read', [OrganizationNotificationController::class, 'markAllAsRead'])->name('mark-all-read');
+        Route::delete('/{notification}', [OrganizationNotificationController::class, 'destroy'])->name('destroy');
     });
 
     // التقارير
@@ -180,6 +219,14 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         Route::post('/{deduction}/retry', [AdminDeductionController::class, 'retry'])->name('retry');
         Route::post('/contract/{contract}/stop', [AdminDeductionController::class, 'stopContractDeductions'])->name('stop-contract');
         Route::post('/contract/{contract}/resume', [AdminDeductionController::class, 'resumeContractDeductions'])->name('resume-contract');
+    });
+
+    // الإشعارات
+    Route::prefix('notifications')->name('notifications.')->group(function () {
+        Route::get('/', [AdminNotificationController::class, 'index'])->name('index');
+        Route::get('/{notification}', [AdminNotificationController::class, 'show'])->name('show');
+        Route::post('/mark-all-read', [AdminNotificationController::class, 'markAllAsRead'])->name('mark-all-read');
+        Route::delete('/{notification}', [AdminNotificationController::class, 'destroy'])->name('destroy');
     });
 
     // التقارير
